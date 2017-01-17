@@ -1,6 +1,6 @@
 <?php
 /**************************************************************************
-Copyright 2016 Benato Denis
+Copyright 2017 Benato Denis
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -21,13 +21,16 @@ use Gishiki\Core\Environment;
 
 /**
  * The Gishiki action starter and framework entry point.
- * 
+ *
  * @author Benato Denis <benato.denis96@gmail.com>
  */
 abstract class Gishiki
 {
     //this is the environment used to fulfill the incoming request
     public static $executionEnvironment = null;
+    
+    //was the Run function already being executed?
+    private static $executed = false;
 
     /**
      * Initialize the Gishiki engine and prepare for
@@ -35,6 +38,9 @@ abstract class Gishiki
      */
     public static function Initialize()
     {
+        //remove default execution time
+        set_time_limit(0);
+
         //get directory separator
         if (!defined('DS')) {
             if (defined('DIRECTORY_SEPARATOR')) {
@@ -60,6 +66,11 @@ abstract class Gishiki
      */
     public static function Run()
     {
+        //avoid double executions
+        if (self::$executed) {
+            return;
+        }
+        
         //initialize the framework
         self::Initialize();
 
@@ -74,8 +85,13 @@ abstract class Gishiki
             //fulfill the client request
             Environment::GetCurrentEnvironment()->FulfillRequest();
         } else {
-            //show the no application page!
-            echo file_get_contents(__DIR__.DS.'no_application.html');
+            if (!defined('CLI_TOOLKIT')) {
+                //show the no application page!
+                echo file_get_contents(__DIR__.DS.'no_application.html');
+            }
         }
+        
+        //the framework execution is complete
+        self::$executed = true;
     }
 }

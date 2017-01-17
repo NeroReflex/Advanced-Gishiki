@@ -1,6 +1,6 @@
 <?php
 /**************************************************************************
-Copyright 2016 Benato Denis
+Copyright 2017 Benato Denis
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ use Gishiki\Algorithms\Collections\SerializableCollection;
 
 /**
  * Represent a record stored on the database.
- * 
+ *
  * @author Benato Denis <benato.denis96@gmail.com>
  */
 final class Record
@@ -35,12 +35,12 @@ final class Record
         $this->data = $data;
     }
 
-    public function GetObjectID()
+    public function getObjectID()
     {
         return $this->id;
     }
 
-    public function GetData()
+    public function getData()
     {
         return $this->data;
     }

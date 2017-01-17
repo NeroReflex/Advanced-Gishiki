@@ -7,8 +7,12 @@ your composer installation (local and/or remote) and presto!
 
 
 ## Windows
-You may want to test Gishiki or develop your application on Windows:
-to install the application on windows you should install [XAMPP](https://www.apachefriends.org/) and enable PDO drivers on php.ini. 
+If you want to test Gishiki or develop your application on Windows, you can
+choose between:
+* Installing [XAMPP](https://www.apachefriends.org/) and manually enable needed
+extensions on php.ini (suggested for ancient PC that cannot run a Virtual Machine)
+* Installing [VirtualBox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com/)
+and use the provided Vagrantfile to setup a fully-working linux environment!
 
 
 ## Mac OS X
@@ -18,7 +22,7 @@ If you are willing to develop your application on a Mac system you should use
 
 ## Linux
 Every production server runs on a linux or a container inside linux, this is why
-every instruction you'll find are written for linux (Ubuntu 14.04/15.04 LTS).
+every instruction you'll find are written for linux: Ubuntu 16.04.
 
 
 ## Virtual Machine
@@ -28,7 +32,7 @@ follow the tutorial on that virtual machine!
 
 
 ## Let's go!
-If you are a newcomer I suggest you to follow the PHP 7.0 & nginx tutorial I have written for you.
+If you are a newcomer I suggest you to follow the [PHP 7.0 & nginx](php_7_nginx.md) tutorial I have written for you.
 
 If you want something that works in a few seconds than the [PaaS](paas.md) page
 is the right manual page!

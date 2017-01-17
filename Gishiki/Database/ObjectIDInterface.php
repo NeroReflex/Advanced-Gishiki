@@ -1,6 +1,6 @@
 <?php
 /**************************************************************************
-Copyright 2016 Benato Denis
+Copyright 2017 Benato Denis
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,14 +19,14 @@ namespace Gishiki\Database;
 
 /**
  * Represent the abstraction of the unique ID of a document/row.
- * 
+ *
  * @author Benato Denis <benato.denis96@gmail.com>
  */
 interface ObjectIDInterface
 {
     /**
      * Create the Object ID representation fron a driver-native representation.
-     * 
+     *
      * @param mixed $native the object id in a native format
      *
      * @throws \InvalidArgumentException the object is is not valid
@@ -35,29 +35,29 @@ interface ObjectIDInterface
 
     /**
      * Check if the current Object ID is valid.
-     * 
+     *
      * @return bool TRUE only if the object ID is valid
      */
-    public function Valid();
+    public function valid();
 
     /**
      * Get the name of th collection containint the  key.
-     * 
+     *
      * @return string the name of the collection
      */
-    public function GetTableName();
+    public function getTableName();
 
     /**
      * Export the object ID in a driver-native format.
-     * 
+     *
      * @return mixed the native object ID
      */
-    public function Export();
+    public function export();
 
     /**
      * Fetch the not-native (string encoded) representation of the
      * currently managed Object ID.
-     * 
+     *
      * @return string the string representation of the object ID
      */
     public function __toString();

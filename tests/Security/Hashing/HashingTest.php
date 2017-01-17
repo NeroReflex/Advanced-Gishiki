@@ -1,6 +1,6 @@
 <?php
 /**************************************************************************
-Copyright 2016 Benato Denis
+Copyright 2017 Benato Denis
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ use Gishiki\Security\Hashing\Algorithms;
  *
  * @author Benato Denis <benato.denis96@gmail.com>
  */
-class HashingTest  extends \PHPUnit_Framework_TestCase
+class HashingTest extends \PHPUnit_Framework_TestCase
 {
     public function testROT13()
     {

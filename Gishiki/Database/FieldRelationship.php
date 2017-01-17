@@ -1,6 +1,6 @@
 <?php
 /**************************************************************************
-Copyright 2016 Benato Denis
+Copyright 2017 Benato Denis
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,18 +15,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 *****************************************************************************/
 
-namespace Gishiki\Pipeline;
+namespace Gishiki\Database;
 
 /**
- * Represent the execution priority of a pipeline instance.
- * 
+ * A collection of relationship that can be applied to a field.
+ *
  * @author Benato Denis <benato.denis96@gmail.com>
  */
-abstract class RuntimePriority
+abstract class FieldRelationship
 {
-    const URGENT = 0;
-    const HIGH = 1;
-    const MEDIUM = 2;
-    const LOW = 3;
-    const LOWEST = 4;
+    const EQUAL = '=';
+    const NOT_EQUAL = '!=';
+    const LESS_THAN = '<';
+    const LESS_OR_EQUAL_THAN = '<=';
+    const GREATER_THAN = '>';
+    const GREATER_OR_EQUAL_THAN = '>=';
+    const IN_RANGE = 'IN';
+    const NOT_IN_RANGE = 'NOT IN';
+    const LIKE = 'LIKE';
+    const NOT_LIKE = 'NOT LIKE';
 }

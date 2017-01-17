@@ -1,6 +1,6 @@
 <?php
 /**************************************************************************
-Copyright 2016 Benato Denis
+Copyright 2017 Benato Denis
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ class CryptographyTest extends \PHPUnit_Framework_TestCase
 {
     public function testEncryption()
     {
-        $privateKey = new PrivateKey(PrivateKey::generate());
+        $privateKey = new PrivateKey(PrivateKey::Generate());
 
         //check if the private key has been loaded correctly
         $this->assertEquals(true, $privateKey->isLoaded());
@@ -48,7 +48,7 @@ class CryptographyTest extends \PHPUnit_Framework_TestCase
         $message = 'mL84hPpR+nmb2UuWDnhiXnpMDxzQT0NMPXT.dY.*?ImTrO86Dt';
 
         //generate two keys
-        $privateKey = new PrivateKey(PrivateKey::generate());
+        $privateKey = new PrivateKey(PrivateKey::Generate());
         $publicKey = new PublicKey($privateKey->exportPublicKey());
 
         //check if the private key has been loaded correctly
@@ -114,7 +114,7 @@ class CryptographyTest extends \PHPUnit_Framework_TestCase
     public function testDigitalSignature()
     {
         //generate a new private key and the associated public key
-        $privKey = new PrivateKey(PrivateKey::generate());
+        $privKey = new PrivateKey(PrivateKey::Generate());
         $pubKey = new PublicKey($privKey->exportPublicKey());
 
         $message = 'who knows if this message will be modified.....';
@@ -129,7 +129,7 @@ class CryptographyTest extends \PHPUnit_Framework_TestCase
     public function testReverse()
     {
         //generate a new private key and the associated public key
-        $privKey = new PrivateKey(PrivateKey::generate());
+        $privKey = new PrivateKey(PrivateKey::Generate());
         $pubKey = new PublicKey($privKey->exportPublicKey());
 
         //generate a very long example message

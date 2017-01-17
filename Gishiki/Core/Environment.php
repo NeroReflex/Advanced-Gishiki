@@ -1,6 +1,6 @@
 <?php
 /**************************************************************************
-Copyright 2016 Benato Denis
+Copyright 2017 Benato Denis
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -25,14 +25,14 @@ namespace Gishiki\Core {
 
     /**
      * Represent the environment used to run controllers.
-     * 
+     *
      * @author Benato Denis <benato.denis96@gmail.com>
      */
     final class Environment extends GenericCollection
     {
         /**
          * Create a mock / fake environment from the given data.
-         * 
+         *
          * The given data is organized as the $_SERVER variable is
          *
          * @param array $userData Array of custom environment keys and values
@@ -70,7 +70,7 @@ namespace Gishiki\Core {
 
         /**
          * Setup a new environment instance used to fulfill the client request.
-         * 
+         *
          * @param bool $selfRegister TRUE if the environment must be assigned as the currently valid one
          */
         public function __construct(array $userData = [], $selfRegister = false, $loadApplication = false)
@@ -113,9 +113,9 @@ namespace Gishiki\Core {
         }
 
         /**
-         * Read the application configuration (settings.json) and return the 
+         * Read the application configuration (settings.json) and return the
          * parsing result.
-         * 
+         *
          * @return array the application configuration
          */
         public static function getApplicationSettings()
@@ -136,7 +136,7 @@ namespace Gishiki\Core {
         /**
          * Check if the application to be executed exists, is valid and has the
          * configuration file.
-         * 
+         *
          * @return bool the application existence
          */
         public static function applicationExists()
@@ -147,7 +147,7 @@ namespace Gishiki\Core {
 
         /**
          * Register the currently active environment.
-         * 
+         *
          * @param Environment $env the currently active environment
          */
         public function RegisterEnvironment(Environment &$env)
@@ -189,7 +189,7 @@ namespace Gishiki\Core {
 
         /**
          * Return the currenlty active environment used to run the controller.
-         * 
+         *
          * @return Environment the current environment
          */
         public static function GetCurrentEnvironment()
@@ -220,12 +220,7 @@ namespace Gishiki\Core {
                         'MASTER_ASYMMETRIC_KEY' => $config['security']['serverKey'],
                     ],
 
-                    'CONNECTIONS' => (array_key_exists('connections', $config)) ? $config['connections'] : array(),
-
-                    'PIPELINE' => [
-                        'CONNECTION' => (isset($config['pipeline']['connection'])) ? $config['pipeline']['connection'] : null,
-                        'COLLECTION' => (isset($config['pipeline']['collection'])) ? $config['pipeline']['collection'] : null,
-                    ],
+                    'CONNECTIONS' => (array_key_exists('connections', $config)) ? $config['connections'] : array()
                 ];
             }
 
@@ -242,14 +237,11 @@ namespace Gishiki\Core {
             foreach ($this->configuration['CONNECTIONS'] as $connection) {
                 \Gishiki\Database\DatabaseManager::Connect($connection['name'], $connection['query']);
             }
-
-            //setup the pipeline execution support
-            \Gishiki\Pipeline\PipelineSupport::Initialize($this->GetConfigurationProperty('PIPELINE_CONNECTION_NAME'), $this->GetConfigurationProperty('PIPELINE_TABLE_NAME'));
         }
 
         /**
          * Return the configuration property.
-         * 
+         *
          * @param string $property the requested configuration property
          *
          * @return the requested configuration property or NULL
@@ -257,12 +249,9 @@ namespace Gishiki\Core {
         public function GetConfigurationProperty($property)
         {
             switch (strtoupper($property)) {
-                case 'PIPELINE_CONNECTION_NAME':
-                    return $this->configuration['PIPELINE']['CONNECTION'];
-
-                case 'PIPELINE_TABLE_NAME':
-                    return $this->configuration['PIPELINE']['COLLECTION'];
-
+                case 'DEVELOPMENT':
+                    return $this->configuration['DEVELOPMENT_ENVIRONMENT'];
+                    
                 case 'LOG_CONNECTION_STRING':
                     return $this->configuration['AUTOLOG_URL'];
 
